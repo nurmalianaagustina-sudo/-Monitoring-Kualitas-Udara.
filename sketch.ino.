@@ -1,0 +1,22 @@
+void setup() {
+  Serial.begin(115200);
+  pinMode(25, OUTPUT); // LED Merah
+  pinMode(26, OUTPUT); // LED Hijau
+}
+
+void loop() {
+  int gas1 = analogRead(34);
+  int gas2 = analogRead(35);
+  int level = (gas1 > gas2) ? gas1 : gas2;
+
+  if (level > 400) {
+    digitalWrite(25, HIGH);
+    digitalWrite(26, LOW);
+    Serial.println("STATUS: ALERT");
+  } else {
+    digitalWrite(25, LOW);
+    digitalWrite(26, HIGH);
+    Serial.println("STATUS: NORMAL");
+  }
+  delay(500);
+}

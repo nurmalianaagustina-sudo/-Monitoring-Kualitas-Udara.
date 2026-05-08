@@ -1,0 +1,29 @@
+{
+  "version": 1,
+  "author": "Nurmaliana Agustina",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "board-esp32-devkit-v1", "id": "esp32", "top": 0, "left": 0, "attrs": {} },
+    { "type": "wokwi-potentiometer", "id": "pot1", "top": -160, "left": -110, "attrs": { "label": "Sensor 1" } },
+    { "type": "wokwi-potentiometer", "id": "pot2", "top": -160, "left": 130, "attrs": { "label": "Sensor 2" } },
+    { "type": "wokwi-led", "id": "led_red", "top": 150, "left": -50, "attrs": { "color": "red", "label": "WARNING" } },
+    { "type": "wokwi-led", "id": "led_green", "top": 150, "left": 90, "attrs": { "color": "green", "label": "SAFE" } },
+    { "type": "wokwi-resistor", "id": "res1", "top": 210, "left": -50, "attrs": { "value": "220" } },
+    { "type": "wokwi-resistor", "id": "res2", "top": 210, "left": 90, "attrs": { "value": "220" } }
+  ],
+  "connections": [
+    [ "esp32:GND.1", "pot1:GND", "black", [ "v0" ] ],
+    [ "esp32:3V3", "pot1:VCC", "red", [ "v0" ] ],
+    [ "esp32:D34", "pot1:SIG", "blue", [ "v0" ] ],
+    [ "esp32:GND.1", "pot2:GND", "black", [ "v0" ] ],
+    [ "esp32:3V3", "pot2:VCC", "red", [ "v0" ] ],
+    [ "esp32:D35", "pot2:SIG", "orange", [ "v0" ] ],
+    [ "esp32:D25", "led_red:A", "purple", [ "v0" ] ],
+    [ "led_red:C", "res1:1", "black", [ "v0" ] ],
+    [ "res1:2", "esp32:GND.2", "black", [ "v0" ] ],
+    [ "esp32:D26", "led_green:A", "green", [ "v0" ] ],
+    [ "led_green:C", "res2:1", "black", [ "v0" ] ],
+    [ "res2:2", "esp32:GND.2", "black", [ "v0" ] ]
+  ],
+  "dependencies": {}
+}
